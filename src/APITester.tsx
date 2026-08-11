@@ -1,23 +1,25 @@
-import {useRef, type FormEvent, useState} from "react";
+import {useRef, type FormEvent, useState, useEffect} from "react";
 
 export function APITester() {
 
-    const [products, setProducts] = useState([])
+    const [data, setData] = useState()
 
-    function myButtonHasBeenClicked() {
-        fetch('https://dummyjson.com/products')
-            .then(res => res.json())
-            .then(p => {
-                setProducts(p.products)
-            });
+
+    useEffect(() => {
+        myOldFunction();
+    }, []);
+
+    async function myOldFunction() {
+       const result = await fetch('/api/hello');
+       const json = await result.json();
+       setData(json)
     }
+
     return (
         <div className="api-tester">
-            <button
-                onClick={myButtonHasBeenClicked}>
-                Click me to send request to some webserver
-            </button>
-            {JSON.stringify(products)}
+            {
+                JSON.stringify(data)
+            }
         </div>
 
     );
