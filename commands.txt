@@ -1,0 +1,9 @@
+mkdir = make a new directory
+cd = change directory (gå ind i ny mappe)
+
+
+git init
+
+download og installer gh cli: https://cli.github.com/
+
+gh repo create
