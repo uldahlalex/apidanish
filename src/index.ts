@@ -6,17 +6,16 @@ const server = serve({
     // Serve index.html for all unmatched routes.
     "/*": index,
 
-    "/api/hello": {
+    "/api/register": {
       async GET(req) {
         return Response.json({
           message: "Hello, world!",
           method: "GET",
         });
       },
-      async PUT(req) {
+      async POST(req) {
         return Response.json({
-          message: "Hello, world!",
-          method: "PUT",
+          message: "You attempted to log in",
         });
       },
     },
