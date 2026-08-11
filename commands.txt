@@ -7,3 +7,12 @@ git init
 download og installer gh cli: https://cli.github.com/
 
 gh repo create
+
+tilføjelse af kode begynder her
+_______
+
+bun init --react = laver boilerplate filer
+bun install = installerer afhængigheder
+bun run dev = starter vores bun server
+bonus: CTRL+C slukker det kørende program
+bonus bonus: "op" piletasten går til seneste kommando (afhængigt af jeres terminal)
