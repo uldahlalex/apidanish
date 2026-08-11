@@ -1,4 +1,4 @@
-import {useRef, type FormEvent, useState, useEffect} from "react";
+import {useRef, type FormEvent, useState, useEffect, type ChangeEvent} from "react";
 
 export interface MyRegisterForm {
     email: string;
@@ -7,7 +7,7 @@ export interface MyRegisterForm {
 
 export function APITester() {
 
-    const [data, setData] = useState<MyRegisterForm>({
+    const [myRegisterForm, setMyRegisterForm] = useState<MyRegisterForm>({
         email: 'your@email.com',
         password: ''
     })
@@ -15,11 +15,16 @@ export function APITester() {
 
     return (
         <div className="api-tester">
-            <input type="email" value={data.email} />
-            <input type="password" value={data.password} />
+            <input type="email"
+                   onChange={e =>
+                       setMyRegisterForm({...myRegisterForm, email: e.target.value})}
+                   value={myRegisterForm.email}/>
+            <input type="password" value={myRegisterForm.password}/>
             <button>Send</button>
 
         </div>
 
     );
+
+
 }
