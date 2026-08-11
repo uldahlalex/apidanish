@@ -1,5 +1,6 @@
 import { serve } from "bun";
 import index from "./index.html";
+import type {MyRegisterForm} from "@/APITester.tsx";
 
 const server = serve({
   routes: {
@@ -14,6 +15,17 @@ const server = serve({
         });
       },
       async POST(req) {
+        const requestBody = (await req.json()) as MyRegisterForm
+        if(!requestBody.email.includes('@')) {
+          return Response.json({
+            message: 'That was not an email!!!!!!'
+          })
+        }
+        if(requestBody.password.length < 6) {
+          return Response.json({
+            message: "password should be 6 chars or more!!!"
+          })
+        }
         return Response.json({
           message: "You attempted to log in",
         });
